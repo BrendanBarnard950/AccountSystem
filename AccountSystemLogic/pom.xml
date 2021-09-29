@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>AccountSystemLogic</artifactId>
+    <packaging>jar</packaging>
 
     
 </project>

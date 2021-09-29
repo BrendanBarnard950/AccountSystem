@@ -22,4 +22,14 @@
         <module>AccountSystemWeb</module>
     </modules>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+    </dependencies>
+
+
 </project>
