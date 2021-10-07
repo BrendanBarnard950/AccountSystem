@@ -10,6 +10,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name="DemoType")
 public class AccountType implements Serializable {
+
+
+
     @Id
     @SequenceGenerator(name="Generic_Sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Generic_Sequence")

@@ -5,7 +5,8 @@ import za.ac.nwu.as.trans.config.TransConfig;
 
 @Import({TransConfig.class})
 @Configuration
-@ComponentScan(basePackages = {"za.ac.nwu.as.logic.flow"
+@ComponentScan(basePackages = {
+        "za.ac.nwu.as.logic.flow"
 })
 public class LogicConfig {
 }
