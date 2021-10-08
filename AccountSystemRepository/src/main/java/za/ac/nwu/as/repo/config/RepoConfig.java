@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Configuration
+@ConfigurationProperties("oracle")
 @EnableTransactionManagement
 @EnableJpaRepositories("za.ac.nwu.as.repo.persistence")
 @EntityScan({"za.ac.nwu.as.domain.persistence", "za.ac.nwu.as.domain.dto"})

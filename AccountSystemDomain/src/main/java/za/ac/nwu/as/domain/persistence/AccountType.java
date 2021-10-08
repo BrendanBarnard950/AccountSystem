@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Component
-@Table(name="DemoType")
+@Table(name="ACCOUNT_TYPE")
 public class AccountType implements Serializable {
 
 
@@ -19,17 +19,17 @@ public class AccountType implements Serializable {
     @Id
     @SequenceGenerator(name="Generic_Sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Generic_Sequence")
-    @Column(name = "accountType_Id")
+    @Column(name = "ACCOUNT_TYPE_ID")
     private Long accountTypeId;
 
-    @Column(name = "mnemonic")
+    @Column(name = "MNEMONIC")
     private String mnemonic;
 
-    @Column(name = "accountType_Name")
+    @Column(name = "ACCOUNT_TYPE_NAME")
     private String accountTypeName;
 
 
-    @Column(name = "Add_Date")
+    @Column(name = "CREATION_DATE")
     private LocalDate CreationDate;
 
     public Long getAccountTypeId() {
