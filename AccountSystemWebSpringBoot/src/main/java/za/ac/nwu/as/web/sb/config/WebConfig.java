@@ -2,6 +2,7 @@ package za.ac.nwu.as.web.sb.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ConfigurationClassPostProcessor.*;
 import org.springframework.context.annotation.*;
 import za.ac.nwu.as.logic.config.LogicConfig;
 

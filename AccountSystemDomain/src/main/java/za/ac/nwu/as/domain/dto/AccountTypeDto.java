@@ -1,20 +1,24 @@
 package za.ac.nwu.as.domain.dto;
 
 import io.swagger.annotations.*;
+import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.persistence.AccountType;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-
+@Entity
 @ApiModel(value = "AccountType",
         description = "A DTO that represents the AccountType"
 )
-//@Entity
+
 public class AccountTypeDto implements Serializable {
+
+    @Id
 
     private String accountTypeName;
     private String mnemonic;
@@ -23,17 +27,12 @@ public class AccountTypeDto implements Serializable {
     public AccountTypeDto() {
     }
 
-    public AccountTypeDto(AccountTypeDto accountTypeDto) {
-        this.setAccountTypeName(accountTypeDto.getAccountTypeName());
-        this.setMnemonic(accountTypeDto.getMnemonic());
-        this.setCreationDate(accountTypeDto.getCreationDate());
+    public AccountTypeDto(AccountType accountType) {
+        this.setAccountTypeName(accountType.getAccountTypeName());
+        this.setMnemonic(accountType.getMnemonic());
+        this.setCreationDate(accountType.getCreationDate());
     }
 
-    public AccountTypeDto(AccountType accountType){
-        this.mnemonic = getMnemonic();
-        this.accountTypeName = getAccountTypeName();
-        this.creationDate = getCreationDate();
-    }
 
     @ApiModelProperty(position = 1,
             value = "AccountType Mnemonic",

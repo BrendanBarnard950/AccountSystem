@@ -26,7 +26,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
 
         List<AccountTypeDto> accountTypeDtos = new ArrayList<>();
         try {
-            for (AccountTypeDto accountType : accountTypeRepo.findAll()){
+            for (AccountType accountType : accountTypeRepo.findAll()){
                 accountTypeDtos.add(new AccountTypeDto(accountType));
             }
         } catch (Exception e) {
