@@ -69,12 +69,18 @@ public class AccountTypeDto implements Serializable {
         return creationDate;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTypeDto that = (AccountTypeDto) o;
-        return Objects.equals(mnemonic, that.mnemonic) && Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(creationDate, that.creationDate);
+        return Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(mnemonic, that.mnemonic) && Objects.equals(creationDate, that.creationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountTypeName, mnemonic, creationDate);
     }
 
     @JsonIgnore
@@ -98,8 +104,8 @@ public class AccountTypeDto implements Serializable {
     public String toString() {
         return "AccountTypeDto{" +
                 "accountTypeName='" + accountTypeName + "'" +
-        ", mnemonic='" + mnemonic + "'" +
-        ", creationDate=" + creationDate +
+                ", mnemonic='" + mnemonic + "'" +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }
