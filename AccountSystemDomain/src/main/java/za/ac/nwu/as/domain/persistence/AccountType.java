@@ -25,24 +25,31 @@ public class AccountType implements Serializable {
     @Column(name = "accountType_Name")
     private String accountTypeName;
 
-    @Column(name = "Member_ID")
-    private long memberId;
-
-    @Column(name = "Amount")
-    private long amount;
 
     @Column(name = "Add_Date")
     private LocalDate addDate;
 
+    public Long getAccountTypeId() {
+        return accountTypeId;
+    }
+
+    public void setAccountTypeId(Long accountTypeId) {
+        this.accountTypeId = accountTypeId;
+    }
+
     public AccountType() {
     }
 
-    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, long memberId, long amount, LocalDate addDate) {
+    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate addDate) {
         this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
-        this.memberId = memberId;
-        this.amount = amount;
+        this.addDate = addDate;
+    }
+
+    public AccountType(String mnemonic, String accountTypeName, LocalDate addDate) {
+        this.mnemonic = mnemonic;
+        this.accountTypeName = accountTypeName;
         this.addDate = addDate;
     }
 }
