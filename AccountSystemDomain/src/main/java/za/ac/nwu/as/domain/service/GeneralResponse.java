@@ -1,3 +1,5 @@
+//Carriage Utility Mechanism (carries response information)
+//Naming Convention courtesy of Michael Reeves (https://youtu.be/A_BlNA7bBxo?t=332)
 package za.ac.nwu.as.domain.service;
 
 import java.io.Serializable;
