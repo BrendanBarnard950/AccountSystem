@@ -15,10 +15,4 @@ public interface CurrenciesRepo extends JpaRepository<Currencies, Long> {
             " WHERE cur.mnemonic = :mnemonic ")
     Currencies getCurrenciesByName(String mnemonic);
 
- /*   @Query(value = "SELECT " +
-            " cur " +
-            " FROM " +
-            " Currencies cur " +
-            " WHERE cur.mnemonic = :id ")
-    Currencies getCurrenciesID(Long id);*/
 }

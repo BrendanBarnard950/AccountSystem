@@ -15,7 +15,7 @@ public class FetchCurrenciesFlowImpl implements FetchCurrenciesFlow {
     private final CurrenciesTranslator currenciesTranslator;
 
     @Autowired
-    public  FetchCurrenciesFlowImpl(CurrenciesTranslator currenciesTranslator){
+    public FetchCurrenciesFlowImpl(CurrenciesTranslator currenciesTranslator){
         this.currenciesTranslator = currenciesTranslator;
     }
 
