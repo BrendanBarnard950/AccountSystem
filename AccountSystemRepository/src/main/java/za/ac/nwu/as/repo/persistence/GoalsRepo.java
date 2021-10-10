@@ -12,6 +12,17 @@ public interface GoalsRepo extends JpaRepository<Goals, Long> {
             " gol " +
             " FROM " +
             " Goals gol " +
-            " WHERE gol.name = name ")
+            " WHERE gol.name = :name ")
     Goals getGoalsByName(String name);
+
+    @Query(value = "SELECT " +
+            " gol " +
+            " FROM " +
+            " Goals gol " +
+            " WHERE gol.name = :id ")
+    Goals getGoalsByID(String id);
+
+
+
+
 }

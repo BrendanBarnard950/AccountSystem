@@ -7,4 +7,5 @@ public interface GoalsTranslator  {
     List<GoalsDto> getAllGoals();
     GoalsDto create(GoalsDto goals);
     GoalsDto getGoalsByName(String name);
+    String cashGoal(String goalID, String username);
 }

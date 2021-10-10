@@ -5,10 +5,8 @@ import org.springframework.stereotype.Component;
 import za.ac.nwu.as.domain.dto.CurrenciesDto;
 import za.ac.nwu.as.logic.flow.CreateCurrenciesFlow;
 import za.ac.nwu.as.trans.CurrenciesTranslator;
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-
 
 @Transactional
 @Component

@@ -7,6 +7,7 @@ import za.ac.nwu.as.repo.persistence.RewardsRepo;
 import za.ac.nwu.as.domain.dto.RewardsDto;
 import za.ac.nwu.as.domain.persistence.Rewards;
 import za.ac.nwu.as.trans.RewardsTranslator;
+import za.ac.nwu.as.repo.persistence.MembersRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,12 @@ import java.util.List;
 public class RewardsTranslatorImpl implements RewardsTranslator {
 
     private final RewardsRepo rewardsRepo;
+    private final MembersRepo membersRepo;
 
     @Autowired
-    public  RewardsTranslatorImpl(RewardsRepo rewardsRepo){
+    public  RewardsTranslatorImpl(RewardsRepo rewardsRepo, MembersRepo membersRepo){
         this.rewardsRepo = rewardsRepo;
+        this.membersRepo = membersRepo;
     }
 
     @Override
@@ -51,6 +54,24 @@ public class RewardsTranslatorImpl implements RewardsTranslator {
         try{
             Rewards rewards = rewardsRepo.getRewardsByPartner(partner);
             return new RewardsDto(rewards);
+        } catch (Exception e) {
+            throw new RuntimeException("Unable to save to Database", e);
+        }
+    }
+
+    @Override
+    public String redeemReward(String goalID, String username){
+        try{
+            Long cost = rewardsRepo.getRewardsByPartner(goalID).getCost();
+            Long balance = membersRepo.getMembersByName(username).getBalance();
+
+            if(cost<=balance){
+                rewardsRepo.redeemReward(username, cost);
+                return "Reward Redeemed! New balance is " + (membersRepo.getMembersByName(username).getBalance() - cost);
+            } else {
+                return "You don't have enough miles!";
+            }
+
         } catch (Exception e) {
             throw new RuntimeException("Unable to save to Database", e);
         }

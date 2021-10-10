@@ -7,4 +7,5 @@ public interface RewardsTranslator  {
     List<RewardsDto> getAllRewards();
     RewardsDto create(RewardsDto accountType);
     RewardsDto getRewardsByPartner(String name);
+    String redeemReward(String goalID, String username);
 }

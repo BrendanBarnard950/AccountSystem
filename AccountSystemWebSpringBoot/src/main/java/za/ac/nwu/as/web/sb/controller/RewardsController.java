@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.as.domain.service.GeneralResponse;
 import za.ac.nwu.as.logic.flow.CreateRewardsFlow;
 import za.ac.nwu.as.logic.flow.FetchRewardsFlow;
+import za.ac.nwu.as.logic.flow.RedeemRewardsFlow;
 import za.ac.nwu.as.domain.dto.RewardsDto;
 
 import java.util.List;
@@ -21,11 +22,13 @@ public class  RewardsController {
 
     private final FetchRewardsFlow fetchRewardsFlow;
     private final CreateRewardsFlow createRewardsFlow;
+    private final RedeemRewardsFlow redeemRewardsFlow;
 
     @Autowired
-    public RewardsController(FetchRewardsFlow fetchRewardsFlow, CreateRewardsFlow createRewardsFlow){
+    public RewardsController(FetchRewardsFlow fetchRewardsFlow, CreateRewardsFlow createRewardsFlow, RedeemRewardsFlow redeemRewardsFlow){
         this.fetchRewardsFlow = fetchRewardsFlow;
         this.createRewardsFlow = createRewardsFlow;
+        this.redeemRewardsFlow = redeemRewardsFlow;
     }
 
     @GetMapping("/all")
@@ -40,23 +43,6 @@ public class  RewardsController {
         List<RewardsDto> currencies = fetchRewardsFlow.getAllRewards();
         GeneralResponse<List<RewardsDto>> response = new GeneralResponse<>(true, currencies); //IT'S GOT THE CUM
         return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-    @PostMapping("")
-    @ApiOperation(value = "Creates new Rewards.", notes = "Creates new Rewards in Database")
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Rewards was created successfully.", response = GeneralResponse.class),
-            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
-    })
-    public ResponseEntity<GeneralResponse<RewardsDto>> create(
-            @ApiParam(value = "Request body to create a new Reward.",
-                    required = true)
-            @RequestBody RewardsDto currencies) {
-        RewardsDto currenciesResponse = createRewardsFlow.create(currencies);
-        GeneralResponse<RewardsDto> response = new GeneralResponse<>(true, currenciesResponse);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 
@@ -78,6 +64,40 @@ public class  RewardsController {
         RewardsDto rewards = fetchRewardsFlow.getRewardsByPartner(partner);
         GeneralResponse<RewardsDto> response = new GeneralResponse<>(true, rewards); //IT'S GOT THE CUM
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("create")
+    @ApiOperation(value = "Creates new Rewards.", notes = "Creates new Rewards in Database")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Rewards was created successfully.", response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
+    })
+    public ResponseEntity<GeneralResponse<RewardsDto>> create(
+            @ApiParam(value = "Request body to create a new Reward.",
+                    required = true)
+            @RequestBody RewardsDto currencies) {
+        RewardsDto currenciesResponse = createRewardsFlow.create(currencies);
+        GeneralResponse<RewardsDto> response = new GeneralResponse<>(true, currenciesResponse);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("redeem")
+    @ApiOperation(value = "Redeems a Reward.", notes = "Exchanges reward for Miles")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Reward was claimed successfully.", response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
+    })
+    public ResponseEntity<GeneralResponse<String>> redeem(
+            @ApiParam(value = "Request body to Redeem Reward.",
+                    required = true)
+            @RequestBody String goalID, String username) {
+        String goalsResponse = redeemRewardsFlow.redeemReward(goalID, username);
+        GeneralResponse<String> response = new GeneralResponse<>(true, goalsResponse);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 }
