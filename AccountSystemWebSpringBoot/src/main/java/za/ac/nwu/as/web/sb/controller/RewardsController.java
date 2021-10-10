@@ -41,7 +41,7 @@ public class  RewardsController {
     })
     public ResponseEntity<GeneralResponse<List<RewardsDto>>> getAll() {
         List<RewardsDto> currencies = fetchRewardsFlow.getAllRewards();
-        GeneralResponse<List<RewardsDto>> response = new GeneralResponse<>(true, currencies); //IT'S GOT THE CUM
+        GeneralResponse<List<RewardsDto>> response = new GeneralResponse<>(true, currencies);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -62,7 +62,7 @@ public class  RewardsController {
             @PathVariable("partner") final String partner) {
 
         RewardsDto rewards = fetchRewardsFlow.getRewardsByPartner(partner);
-        GeneralResponse<RewardsDto> response = new GeneralResponse<>(true, rewards); //IT'S GOT THE CUM
+        GeneralResponse<RewardsDto> response = new GeneralResponse<>(true, rewards);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

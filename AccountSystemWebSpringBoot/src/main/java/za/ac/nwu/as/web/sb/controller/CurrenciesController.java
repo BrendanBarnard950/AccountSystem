@@ -38,7 +38,7 @@ public class  CurrenciesController {
     })
     public ResponseEntity<GeneralResponse<List<CurrenciesDto>>> getAll() {
         List<CurrenciesDto> currencies = fetchCurrenciesFlow.getAllCurrencies();
-        GeneralResponse<List<CurrenciesDto>> response = new GeneralResponse<>(true, currencies); //IT'S GOT THE CUM
+        GeneralResponse<List<CurrenciesDto>> response = new GeneralResponse<>(true, currencies);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -76,7 +76,7 @@ public class  CurrenciesController {
             @PathVariable("mnemonic") final String mnemonic) {
 
         CurrenciesDto currencies = fetchCurrenciesFlow.getCurrenciesByName(mnemonic);
-        GeneralResponse<CurrenciesDto> response = new GeneralResponse<>(true, currencies); //IT'S GOT THE CUM
+        GeneralResponse<CurrenciesDto> response = new GeneralResponse<>(true, currencies);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

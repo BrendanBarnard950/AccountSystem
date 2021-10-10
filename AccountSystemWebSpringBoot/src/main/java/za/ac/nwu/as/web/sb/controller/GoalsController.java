@@ -41,7 +41,7 @@ public class  GoalsController {
     })
     public ResponseEntity<GeneralResponse<List<GoalsDto>>> getAll() {
         List<GoalsDto> goals = fetchGoalsFlow.getAllGoals();
-        GeneralResponse<List<GoalsDto>> response = new GeneralResponse<>(true, goals); //IT'S GOT THE CUM
+        GeneralResponse<List<GoalsDto>> response = new GeneralResponse<>(true, goals);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -62,7 +62,7 @@ public class  GoalsController {
             @PathVariable("name") final String partner) {
 
         GoalsDto goals = fetchGoalsFlow.getGoalsByName(partner);
-        GeneralResponse<GoalsDto> response = new GeneralResponse<>(true, goals); //IT'S GOT THE CUM
+        GeneralResponse<GoalsDto> response = new GeneralResponse<>(true, goals);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

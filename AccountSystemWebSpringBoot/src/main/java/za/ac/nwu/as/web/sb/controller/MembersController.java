@@ -38,7 +38,7 @@ public class  MembersController {
     })
     public ResponseEntity<GeneralResponse<List<MembersDto>>> getAll() {
         List<MembersDto> members = fetchMembersFlow.getAllMembers();
-        GeneralResponse<List<MembersDto>> response = new GeneralResponse<>(true, members); //IT'S GOT THE CUM
+        GeneralResponse<List<MembersDto>> response = new GeneralResponse<>(true, members);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -76,7 +76,7 @@ public class  MembersController {
             @PathVariable("username") final String name) {
 
         MembersDto members = fetchMembersFlow.getMembersByName(name);
-        GeneralResponse<MembersDto> response = new GeneralResponse<>(true, members); //IT'S GOT THE CUM
+        GeneralResponse<MembersDto> response = new GeneralResponse<>(true, members);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
