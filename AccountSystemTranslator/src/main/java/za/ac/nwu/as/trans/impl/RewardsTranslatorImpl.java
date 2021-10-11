@@ -1,6 +1,8 @@
 package za.ac.nwu.as.trans.impl;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.as.repo.persistence.RewardsRepo;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Component
 public class RewardsTranslatorImpl implements RewardsTranslator {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RewardsTranslatorImpl.class);
 
     private final RewardsRepo rewardsRepo;
     private final MembersRepo membersRepo;
@@ -64,6 +68,8 @@ public class RewardsTranslatorImpl implements RewardsTranslator {
         try{
             Long cost = rewardsRepo.getRewardsByPartner(goalID).getCost();
             Long balance = membersRepo.getMembersByName(username).getBalance();
+
+            LOGGER.info("The balance and cost is {} and {}", balance, cost);
 
             if(cost<=balance){
                 rewardsRepo.redeemReward(username, cost);
